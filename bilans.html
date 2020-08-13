@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+  
+<head>  
+	<meta charset="utf-8"/>
+	<title>Tytuł strony</title>
+	<meta name="description" content="Opis mojej strony"/>
+	<meta name="keywords" content="słowa kluczowe"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,1"/>  
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
+	
+	<script type="text/javascript" src="script2.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+	
+</head>
+
+<body>
+	<header>
+		<div class="title">
+			<h1>Budżet osobisty</h1>
+			<h2>Zacznij oszczędzać by spełniać swoje marzenia</h2>
+		</div>
+	</header>
+	
+	<main>	
+		<div class="main4">
+			<a href="menu.html" class="back"><i class="icon-left-big"></i></a>
+			<span class="fontello"><i class="icon-chart-pie"></i></span>
+			<h1>Przeglądaj bilans</h1>
+			
+			<div class="balance"><label>Bilans z okresu
+					<select name="range" id="range" onChange="setDates();">
+						<option value="1">bieżącego miesiąca</option>
+						<option value="2">poprzedniego miesiąca</option>
+						<option value="3">bieżącego roku</option>
+						<option value="4">niestandardowego czasu</option>
+					</select>
+				</label>
+			</div>
+			
+			<div class="balance1">
+				<form>
+					<div class="balance1a"> 
+					<label for="date_start">od</label>			
+					<input name="date_start" id="date_start" type="date" required/></div>
+					
+					<div class="balance1b">
+					<label for="date_end">do</label>	
+					<input name="date_end" id="date_end" type="date" required/></div>
+					<div style="clear:both;"> </div> 
+				</form>
+			</div>
+			
+			<div class="balance2">
+				<div class="balance2a">
+					<span class="fontello1"><i class="icon-chart-line"></i></span>
+					<h2>PRZYCHODY</h2>
+					<table id="incomeTable">
+						<tr>       
+							<th>   
+								Kategoria
+							</th>
+							<th>
+								Kwota
+							</th>
+						</tr>
+						<tr>
+							<td>   
+								xxx
+							</td>
+							<td>
+								xxx
+							</td>
+						</tr>
+						<tr>
+							<td>   
+								xxx
+							</td>
+							<td>
+								xxx
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="piechart1"></div>
+				
+				
+				
+				<div class="balance2b">
+					<span class="fontello1"><i class="icon-credit-card"></i></span> 
+					<h2>WYDATKI</h2>
+					<table id="expenceTable">
+						<tr>       
+							<th>   
+								Kategoria
+							</th>
+							<th>
+								Kwota
+							</th>
+						</tr>
+						<tr>
+							<td>   
+								xxx
+							</td>
+							<td>
+								xxx
+							</td>
+						</tr>
+						<tr>
+							<td>   
+								xxx
+							</td>
+							<td>
+								xxx
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="piechart2"></div>
+				
+				
+			</div>
+			
+			<div class="balance3">
+				<div><span class="fontello1"><i class="icon-balance-scale"></i></span>
+				<h2>BILANS</h2></div>		
+				<div class="balance3a">39000 zł</div>
+				<div class="balance3c">Gratulacje - świetnie zarządzasz finansami</div>	
+			<div>
+			
+		</div>
+	</main>
+	
+	<footer>
+		<div class="information">2020 &copy; Created by: Agnieszka Jankowska</div>
+	</footer>
+	
+	<script type="text/javascript" src="script2.js"></script>
+
+</body>
+</html>
