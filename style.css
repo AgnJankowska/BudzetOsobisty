@@ -1,0 +1,78 @@
+body{
+	/* Background pattern from Toptal Subtle Patterns */
+	background-image: url("img/tlo.png");
+	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	margin: 0;
+   }
+   
+.title{
+    background-color: #494949;
+	color: #e3e3e3;	
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 50px;
+	-webkit-box-shadow: 0px 15px 33px -10px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 15px 33px -10px rgba(0,0,0,0.75);
+	box-shadow: 0px 15px 33px -10px rgba(0,0,0,0.75);
+	text-align: center;
+}
+
+.title h1{
+	font-size: 55px;
+    font-weight: 800;
+    letter-spacing: 4px;
+	margin: 0;
+	text-transform: uppercase;
+	text-shadow:1px 2px 3px black;
+}
+
+
+.title h2{
+	font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+	margin-top: 17px;
+	margin-bottom: 0px;
+	text-shadow:1px 2px 3px black;
+}
+
+.tile1{
+	display: block;
+	padding-top: 30px;
+	height: 200px;
+	width: 300px;
+	background-color: #0066cc;
+	margin-left:auto;
+    margin-right:auto;
+	margin-bottom: 60px;
+	color: #e3e3e3;
+    text-align: center;
+	font-size: 30px;
+	border-radius: 50px;
+	text-shadow:1px 1px 1px black;
+	text-decoration: none;
+}
+
+.tile1:hover{
+	background-color: #DE2828;
+	-webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+}
+
+.fontello{
+	display: block;
+	font-size: 80px;
+	margin-bottom:10px;
+}
+
+.information{
+	background-color:#8d8d8d;
+	color: #f9f9f9;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin: 0;
+	text-shadow:1px 1px 1px black;
+}
