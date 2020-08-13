@@ -119,7 +119,7 @@ body{
 	background-color: #dadada;
 	border-radius: 10px;
 	padding:5px;
-	border: none;
+	border: 2px solid #7c7c7c;
 	font-family: 'Encode Sans Semi Expanded', sans-serif;
 }
 
@@ -153,6 +153,7 @@ input[type=submit]{
 
 input[type=submit]:hover{
 	background-color: #CD1717;
+	cursor: pointer;
 }
 
 input[type=submit]:focus{
@@ -318,6 +319,7 @@ input[type=submit]:focus{
 	padding:5px;
 	border: none;
 	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	border: 2px solid #7c7c7c;
 	
 }
 
@@ -372,7 +374,7 @@ input[type=submit]:focus{
 }
 
 .expence2a input[type=radio]{
-	margin-right:5px;	
+	margin-right:5px;
 }
 
 .expence2a:hover{
@@ -397,6 +399,7 @@ input[type=submit]:focus{
 	background-color: #dadada;
 	border-radius: 10px;
 	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	border: 2px solid #7c7c7c;
 }
 
 .expence3 select:focus{
@@ -423,6 +426,7 @@ input[type=submit]:focus{
 	background-color: #dadada;
 	border-radius: 10px;
 	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	border: 2px solid #7c7c7c;
 }
 
 .expence4 textarea:focus{
@@ -452,6 +456,7 @@ input[type=submit]:focus{
 	background-color: #dadada;
 	border-radius: 10px;
 	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	border: 2px solid #7c7c7c;
 }
 
 .balance select:focus{
@@ -494,8 +499,8 @@ input[type=submit]:focus{
 	background-color: #dadada;
 	border-radius: 10px;
 	padding:5px;
-	border: none;
 	font-family: 'Encode Sans Semi Expanded', sans-serif;
+	border: 2px solid #7c7c7c;
 }
 
 .balance1 input[type=date]:focus{
