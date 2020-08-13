@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
 	
-
+	<script type="text/javascript" src="script2.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 	
 </head>
@@ -31,7 +31,7 @@
 			<h1>Przeglądaj bilans</h1>
 			
 			<div class="balance"><label>Bilans z okresu
-					<select name="range">
+					<select name="range" id="range" onChange="setDates();">
 						<option value="1">bieżącego miesiąca</option>
 						<option value="2">poprzedniego miesiąca</option>
 						<option value="3">bieżącego roku</option>
