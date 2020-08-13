@@ -67,15 +67,15 @@
       "src": "fontawesome"
     },
     {
-      "uid": "7ea4150d9eb2d2ade9491d5ad905718c",
-      "css": "credit-card-alt",
-      "code": 62083,
-      "src": "fontawesome"
-    },
-    {
       "uid": "f279f25007794fa6837ff78fe94b216e",
       "css": "money",
       "code": 61654,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "ff1710a605b3fc98346903db89034558",
+      "css": "balance-scale",
+      "code": 62030,
       "src": "fontawesome"
     }
   ]
