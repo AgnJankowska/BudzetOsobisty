@@ -6,3 +6,4 @@ d = n.getDate();
 if(d<10) d = '0'+d;
 
 document.getElementById("currentDate").value = y + "-" + m + "-" + d;
+
