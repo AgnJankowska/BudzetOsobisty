@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+  
+<head>  
+	<meta charset="utf-8"/>
+	<title>Tytuł strony</title>
+	<meta name="description" content="Opis mojej strony"/>
+	<meta name="keywords" content="słowa kluczowe"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,1"/>  
+	<link rel="stylesheet" href="style.css" type="text/css"/>
+	<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>	
+</head>
+
+<body>
+	<header>
+		<div class="title">
+			<h1>Budżet osobisty</h1>
+			<h2>Zacznij oszczędzać by spełniać swoje marzenia</h2>
+		</div>
+	</header>
+	
+	<main>	
+		<div class="main3">
+			<a href="menu.html" class="back"><i class="icon-left-big"></i></a>
+			<span class="fontello"><i class="icon-credit-card"></i></span>
+			<h1>Dodaj wydatek</h1>
+			
+			<form>
+				<div class="expence1"><label>Kwota <input name="amount" type="number" step="0.01" required/></label></div>
+				
+				<div class="expence1"><label>Data <input name="date" id="currentDate" type="date" required/></label></div>
+				<div style="clear:both;"> </div> 
+
+
+				<div class="expence2"> <div class="expence2b">Sposób płatności</div>
+					<label class="expence2a"><span class="fontello"><i class="icon-money"></i></span><input type="radio" name="payMethod" value="1r" checked/>Gotówka</label>
+				
+					<label class="expence2a"><span class="fontello"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="2"/>Karta kredytowa</label>
+				
+					<label class="expence2a"><span class="fontello"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="3"/>Karta debetowa</label>
+				</div>
+
+				<div class="expence3"><label>Kategoria 
+					<select name="category">
+						<option value="1">Jedzenie</option>
+						<option value="2">Mieszkanie</option>
+						<option value="3">Transport</option>
+						<option value="4">Telekomunikacja</option>
+						<option value="5">Opieka zdrowotna</option>
+						<option value="6">Ubranie</option>
+						<option value="7">Higiena</option>
+						<option value="8">Dzieci</option>
+						<option value="9">Rozrywka</option>
+						<option value="10">Wycieczka</option>
+						<option value="11">Szkolenia</option>
+						<option value="12">Książki</option>
+						<option value="13">Oszczędności</option>
+						<option value="14">Na emeryturę</option>
+						<option value="15">Spłata długów</option>
+						<option value="16">Darowizna</option>
+						<option value="17">Inne wydatki</option>
+					</select>
+				</label></div>
+
+				<div class="expence4">
+					<label for="comment">Komentarz </label>
+					<textarea id="comment "name="comment" cols="39" rows="4"></textarea>
+				</div>
+				
+				<input name="expenceSubmit" type="submit" value="Dodaj wydatek"/>
+			</form>
+		</div>
+	</main>
+	
+	<footer>
+		<div class="information">2020 &copy; Created by: Agnieszka Jankowska</div>
+	</footer>
+	
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
