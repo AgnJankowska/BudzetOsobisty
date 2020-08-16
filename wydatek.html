@@ -33,12 +33,13 @@
 				<div style="clear:both;"> </div> 
 
 
-				<div class="expence2"> <div class="expence2b">Sposób płatności</div>
-					<label class="expence2a"><span class="fontello"><i class="icon-money"></i></span><input type="radio" name="payMethod" value="1r" checked/>Gotówka</label>
+				<div class="expence2"> 
+					<div class="expence2b">Sposób płatności</div>
+					<label class="expence2a" id="active1" onclick="active1()"><span class="fontello2"><i class="icon-money"></i></span><input type="radio" name="payMethod" value="1r" checked/>Gotówka</label>
 				
-					<label class="expence2a"><span class="fontello"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="2"/>Karta kredytowa</label>
+					<label class="expence2a" id="active2" onclick="active2()"><span class="fontello2"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="2"/>Karta kredytowa</label>
 				
-					<label class="expence2a"><span class="fontello"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="3"/>Karta debetowa</label>
+					<label class="expence2a" id="active3" onclick="active3()"><span class="fontello2"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="3"/>Karta debetowa</label>
 				</div>
 
 				<div class="expence3"><label>Kategoria 

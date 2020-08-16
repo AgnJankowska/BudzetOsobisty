@@ -1,7 +1,6 @@
 window.onload = setDates();
 
-//Start and ending of balance
-
+//Start and end of balance
 function currentDay() {
 	n =  new Date();
 	let d = n.getDate();
@@ -46,22 +45,20 @@ function checkNumberOfDays (year, month) {
    }
 }
 
-
 function setStartDate() {
-	let range = document.getElementById("range");
-	let value= range.options[range.selectedIndex].value;
+	let start=document.getElementById("range").value;
 	
-	if (value==1){
+	if (start==1){
 		d = '01';
 		m = currentMonth();
 			if(m<10) m = '0'+m;
 		y = currentYear();
 		return y + "-" + m + "-" + d}
 	
-	else if (value==2){
+	else if (start==2){
 		d = '01';
-		if( currentMonth()==1){
-			m = 12
+		if(currentMonth()==1){
+			m = 12;
 			y = currentYear()-1;
 		}
 		else{
@@ -71,7 +68,7 @@ function setStartDate() {
 		}
 		return y + "-" + m + "-" + d}
 		
-	else if (value==3){
+	else if (start==3){
 		d = '01';
 		m = '01';
 		y = currentYear();
@@ -82,10 +79,9 @@ function setStartDate() {
 }
 
 function setEndDate() {
-	let sel = document.getElementById("range");
-	let value= sel.options[sel.selectedIndex].value;
+	let end = document.getElementById("range").value;
 	
-	if (value==1){
+	if (end==1){
 		d = currentDay();
 			if(d<10) d = '0'+d;
 		m = currentMonth();
@@ -93,7 +89,7 @@ function setEndDate() {
 		y = currentYear();
 		return y + "-" + m + "-" + d}
 	
-	else if (value==2){
+	else if (end==2){
 		if( currentMonth()==1){
 			m = 12
 			y = currentYear()-1;
@@ -106,7 +102,7 @@ function setEndDate() {
 
 		return y + "-" + m + "-" + d}
 		
-	else if (value==3){
+	else if (end==3){
 		d = currentDay();
 			if(d<10) d = '0'+d;
 		m = currentMonth();

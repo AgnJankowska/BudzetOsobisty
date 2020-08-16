@@ -156,7 +156,7 @@ input[type=submit]:hover{
 	cursor: pointer;
 }
 
-input[type=submit]:focus{
+input[type=submit]:active{
 	outline: none;
 	-webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
@@ -373,12 +373,24 @@ input[type=submit]:focus{
 	text-shadow:1px 1px 1px black;
 }
 
+.fontello2{
+	display: block;
+	font-size: 80px;
+	margin-bottom:0px;
+}
+
 .expence2a input[type=radio]{
-	margin-right:5px;
+	margin-bottom:0px;
+	margin-top:0px;
+	display:block;
+	opacity: 0;
+}
+
+.expence2 #active1{
+	background-color: #b71c1c;
 }
 
 .expence2a:hover{
-	background-color: #b71c1c;
 	-webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);	
@@ -570,6 +582,7 @@ input[type=submit]:focus{
 
 .balance3{
 	border-top: 1px dashed #283593;
+	border-bottom: 1px dashed #283593;
 	padding-top: 10px;
 	text-align: center;
 	margin-left: 15px;
@@ -603,4 +616,33 @@ input[type=submit]:focus{
 	display: inline-block;
 	font-size: 30px;
 	letter-spacing: 3px;
+}
+
+.main4 .button{
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: 30px;
+	width: 300px;
+	font-size: 30px;
+	padding:10px;
+	border-radius: 10px;
+	background-color: #DE2828;
+	color: #e3e3e3;
+	text-shadow:1px 1px 1px black;	
+}
+
+.main4 .button:hover{
+	background-color: #CD1717;
+	cursor: pointer;
+}
+
+.main4 .button:active{
+	outline: none;
+	-webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+}
+
+.main4 a{
+	text-decoration: none;	
 }
