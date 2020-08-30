@@ -45,9 +45,7 @@ function checkNumberOfDays (year, month) {
    }
 }
 
-function setStartDate() {
-	let start=document.getElementById("range").value;
-	
+function setStartDate(start) {
 	if (start==1){
 		d = '01';
 		m = currentMonth();
@@ -78,9 +76,7 @@ function setStartDate() {
 		return ''
 }
 
-function setEndDate() {
-	let end = document.getElementById("range").value;
-	
+function setEndDate(end) {
 	if (end==1){
 		d = currentDay();
 			if(d<10) d = '0'+d;
@@ -115,31 +111,49 @@ function setEndDate() {
 }
 
 function setDates() {
-	document.getElementById("date_start").value = setStartDate();
-	document.getElementById("date_end").value = setEndDate();
+	let number = document.getElementById("range").value;
+		
+	if (number==4){
+		$("#exampleModal").modal();
+		document.getElementById("date_start").value = document.getElementById("date1").value;
+		document.getElementById("date_end").value = document.getElementById("date2").value;
+		}
+	
+	else {
+		document.getElementById("date_start").value = setStartDate(number);
+		document.getElementById("date_end").value = setEndDate(number);}
 }
+
+
+
+
+
+
+
+
+
+
 
 // Load google charts
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart1);
-google.charts.setOnLoadCallback(drawChart2);
 
 // Draw the chart and set the chart values
 function drawChart1() {
   var data = google.visualization.arrayToDataTable([
-  ['Ktegoria', 'Kwota'],
-  ['Wynagrodzenie', 8],
-  ['Odsetki bankowe', 5],
-  ['Allegro', 2],
+  ['Kategoria', 'Kwota'],
+  ['Jedzenie', 8],
+  ['Mieszkanie', 5],
+  ['Transport', 2],
   ['Inne', 2],
 ]);
 
   var options = {
-	  'width':500, 
-	  'height':300,
+	  'width':520, 
+	  'height':400,
 	  is3D: true,
-	  backgroundColor: '#0066cc',
-	  legend: {position: 'right', alignment:'center' , textStyle: {color: 'white', fontSize: 16}},
+	  backgroundColor: '#f9f9f9',
+	  legend: {position: 'right', alignment:'center' , textStyle: {color: 'black', fontSize: 16}},
 	  chartArea:{width:'90%',height:'90%'},
 	  pieSliceText: 'percentage',
 	  pieSliceBorderColor: 'grey',
@@ -147,33 +161,6 @@ function drawChart1() {
 	  pieSliceTextStyle: {color:'white', fontSize: 16}
 	};
 
-  var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-  chart.draw(data, options);
-}
-
-function drawChart2() {
-  var data = google.visualization.arrayToDataTable([
-  ['Ktegoria', 'Kwota'],
-  ['Jedzenie', 8],
-  ['Mieszkanie', 5],
-  ['Transport', 2],
-  ['Telekomunikacja', 2],
-  ['Opieka zdrowotna', 2]
-]);
-
-  var options = {
-	  'width':480, 
-	  'height':300,
-	  is3D: true,
-	  backgroundColor: '#0066cc',
-	  legend: {position: 'right', alignment:'center' , textStyle: {color: 'white', fontSize: 16}},
-	  chartArea:{width:'90%',height:'90%'},
-	  pieSliceText: 'percentage',
-	  pieSliceBorderColor: 'grey',
-	  sliceVisibilityThreshold: .07,
-	  pieSliceTextStyle: {color:'white', fontSize: 16}
-	};
-
-  var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
   chart.draw(data, options);
 }

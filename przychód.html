@@ -19,7 +19,7 @@
 		<div class="title py-1 px-2 mb-5">
 			<h1 class="font-weight-bold text-uppercase py-2"> Budżet osobisty</h1>
 			<h2 class="pb-2">Zacznij oszczędzać by spełniać swoje marzenia</h2>
-
+		
 			<nav class="navbar-expand-lg navbar navbar-dark mt-3 menu">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
 					<span class="navbar-toggler-icon"></span>
@@ -30,10 +30,10 @@
 						<li class="nav-item mx-lg-1">
 							<a href="menu.html" class="nav-link"><i class="icon-home"></i>Start</a>
 						</li>
-						<li class="nav-item active mx-lg-1">
+						<li class="nav-item mx-lg-1">
 							<a href="wydatek.html" class="nav-link"><i class="icon-credit-card"></i>Dodaj wydatek</a>
 						</li>
-						<li class="nav-item mx-lg-1">
+						<li class="nav-item active mx-lg-1">
 							<a href="przychód.html" class="nav-link"><i class="icon-chart-line"></i>Dodaj przychód</a>
 						</li>
 						<li class="nav-item mx-lg-1">
@@ -58,7 +58,7 @@
 					<div class ="col-lg-8 col-sm-10 p-0 bg-light text-secondary mx-auto">
 					
 						<h1 class="head mx-auto p-3">
-							<span class="fontello mr-3"><i class="icon-credit-card"></i></span>Dodaj wydatek
+							<span class="fontello mr-3"><i class="icon-chart-line"></i></span>Dodaj przychód
 						</h1>
 					
 						<form class="form form-inline mt-4">
@@ -73,45 +73,14 @@
 							
 							<div class="w-100"></div>
 							
-							<div class="col-3 col-xl-2 offset-xl-1 mb-3 mr-4 textright">Sposób płatności</div>
-							
-							<div class="col-7 mb-3 p-0">
-								<div class="row m-0">
-									<div class="col-12 col-md p-1">
-										<label class="expence2a col-12 p-0" id="active1" onclick="active1()"><span class="fontello2 px-md-3"><i class="icon-money"></i></span><input type="radio" name="payMethod" value="2" required/>Gotówka</label>
-									</div>
-									<div class="col-12 col-md p-1">
-										<label class="expence2a col-12 p-0" id="active2" onclick="active2()"><span class="fontello2"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="2" required/>Karta kredytowa</label>
-									</div>
-									<div class="col-12 col-md p-1">
-										<label class="expence2a col-12 p-0" id="active3" onclick="active3()"><span class="fontello2"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="3" required/>Karta debetowa</label>
-									</div>
-								</div>
-							</div>
-							
-							<div class="w-100"></div>
-							
 							<div class="col-3 col-xl-2 offset-xl-1 mb-3 mr-4">
 							<label class="textright" >Kategoria</label></div>
 							
 							<select name="category" class="form-control col-7 mb-3">
-									<option value="1">Jedzenie</option>
-									<option value="2">Mieszkanie</option>
-									<option value="3">Transport</option>
-									<option value="4">Telekomunikacja</option>
-									<option value="5">Opieka zdrowotna</option>
-									<option value="6">Ubranie</option>
-									<option value="7">Higiena</option>
-									<option value="8">Dzieci</option>
-									<option value="9">Rozrywka</option>
-									<option value="10">Wycieczka</option>
-									<option value="11">Szkolenia</option>
-									<option value="12">Książki</option>
-									<option value="13">Oszczędności</option>
-									<option value="14">Na emeryturę</option>
-									<option value="15">Spłata długów</option>
-									<option value="16">Darowizna</option>
-									<option value="17">Inne wydatki</option>
+									<option value="1">Wynagrodzenie</option>
+									<option value="2">Odestki bankowe</option>
+									<option value="3">Sprzedaż na allegro</option>
+									<option value="4">Inne</option>
 							</select>
 							
 							<div class="w-100"></div>
@@ -122,13 +91,13 @@
 							<div class="w-100"></div>
 				
 							<div class="col-12 my-4 pt-4 buttons">
-											
+					
 								<a href="menu.html">
 								<div class="d-inline button mx-2 px-5"><i class="icon-cancel"></i>Anuluj</div></a>
 								
 								<a href="menu.html">
 								<button class="d-inline button2 mx-2 px-5"><i class="icon-ok"></i>Dodaj</button></a>
-								
+															
 							</div>
 						</form>
 					</div>

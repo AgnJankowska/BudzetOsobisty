@@ -12,19 +12,19 @@ function setStartDate() {
 document.getElementById("currentDate").value = setStartDate();
 
 function active1(){
-	document.getElementById("active1").style.background = "#b71c1c";
-	document.getElementById("active2").style.background = "#283593";
-	document.getElementById("active3").style.background = "#283593";
+	document.getElementById("active1").style.background = "#0066cc";
+	document.getElementById("active2").style.background = "grey";
+	document.getElementById("active3").style.background = "grey";
 }
 
 function active2(){
-	document.getElementById("active2").style.background = "#b71c1c";
-	document.getElementById("active1").style.background = "#283593";
-	document.getElementById("active3").style.background = "#283593";
+	document.getElementById("active2").style.background = "#0066cc";
+	document.getElementById("active1").style.background = "grey";
+	document.getElementById("active3").style.background = "grey";
 }
 
 function active3(){
-	document.getElementById("active3").style.background = "#b71c1c";
-	document.getElementById("active1").style.background = "#283593";
-	document.getElementById("active2").style.background = "#283593";
+	document.getElementById("active3").style.background = "#0066cc";
+	document.getElementById("active1").style.background = "grey";
+	document.getElementById("active2").style.background = "grey";
 }
