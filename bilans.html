@@ -5,140 +5,232 @@
 	<meta charset="utf-8"/>
 	<title>Tytuł strony</title>
 	<meta name="description" content="Opis mojej strony"/>
-	<meta name="keywords" content="słowa kluczowe"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,1"/>  
+	<meta name="keywords" content="słowa kluczowe"/> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 	
 </head>
 
 <body>
 	<header>
-		<div class="title">
-			<h1>Budżet osobisty</h1>
-			<h2>Zacznij oszczędzać by spełniać swoje marzenia</h2>
+		<div class="title py-1 px-2 mb-5">
+			<h1 class="font-weight-bold text-uppercase py-2"> Budżet osobisty</h1>
+			<h2 class="pb-2">Zacznij oszczędzać by spełniać swoje marzenia</h2>
+		
+			<nav class="navbar-expand-lg navbar navbar-dark mt-3 menu">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="mainmenu">
+					<ul class="navbar-nav mx-auto">
+						<li class="nav-item mx-lg-1">
+							<a href="menu.html" class="nav-link"><i class="icon-home"></i>Start</a>
+						</li>
+						<li class="nav-item mx-lg-1">
+							<a href="wydatek.html" class="nav-link"><i class="icon-credit-card"></i>Dodaj wydatek</a>
+						</li>
+						<li class="nav-item mx-lg-1">
+							<a href="przychód.html" class="nav-link"><i class="icon-chart-line"></i>Dodaj przychód</a>
+						</li>
+						<li class="nav-item active mx-lg-1">
+							<a href="bilans.html" class="nav-link"><i class="icon-chart-pie"></i>Bilans</a>
+						</li>
+						<li class="nav-item mx-lg-1">
+							<a href="#.html" class="nav-link"><i class="icon-cogs"></i>Ustawienia</a>
+						</li>
+						<li class="nav-item mx-lg-1">
+							<a href="index.html" class="nav-link"><i class="icon-logout"></i>Wyloguj</a>
+						</li>
+					</ul>    
+				</div>
+			</nav>
 		</div>
 	</header>
 	
 	<main>	
-		<div class="main4">
-			<a href="menu.html" class="back"><i class="icon-left-big"></i></a>
-			<span class="fontello"><i class="icon-chart-pie"></i></span>
-			<h1>Przeglądaj bilans</h1>
-			
-			<div class="balance"><label>Bilans z okresu
-					<select name="range" id="range" onChange="setDates();">
-						<option value="1">bieżącego miesiąca</option>
-						<option value="2">poprzedniego miesiąca</option>
-						<option value="3">bieżącego roku</option>
-						<option value="4">niestandardowego czasu</option>
-					</select>
-				</label>
-			</div>
-			
-			<div class="balance1">
-				<form>
-					<div class="balance1a"> 
-					<label for="date_start">od</label>			
-					<input name="date_start" id="date_start" type="date" required/></div>
+		<section class="balance">
+			<div class ="container p-0 mb-5">
+				<div class ="row m-0">			
+					<div class ="col-lg-8 col-md-10 p-0 bg-light text-secondary mx-auto">
 					
-					<div class="balance1b">
-					<label for="date_end">do</label>	
-					<input name="date_end" id="date_end" type="date" required/></div>
-					<div style="clear:both;"> </div> 
-				</form>
-			</div>
+						<h1 class="head mx-auto p-3">
+							<span class="fontello mr-3"><i class="icon-chart-pie"></i></span>Bilans
+						</h1>
+						
+						<form class="form form-inline mt-4">
+							<div class="col-3 col-xl-3 mb-3 mr-4">
+							<label class="textright" >Bilans z okresu</label></div>
+							
+							<select class="form-control col-7 mb-3" name="range" id="range" onChange="setDates();">  
+									<option value="1">bieżącego miesiąca</option>
+									<option value="2">poprzedniego miesiąca</option>
+									<option value="3">bieżącego roku</option>
+									<option value="4">niestandardowego czasu</option>
+							</select>
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+								<div class="modal-content">
+								  <div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Wskaż okres bilansu</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									  <span aria-hidden="true">&times;</span>
+									</button>
+								  </div>
+								  <div class="modal-body">
+								  
+									<label class="mb-2" for="date_start">od</label>		
+									<input class="form-control col-7 mb-3" name="date1" id="date1" type="date" onChange="setDates();" required/>
+
+									<label class="mb-2" for="date_end">do</label>	
+									<input class="form-control" name="date2" id="date2" type="date" onChange="setDates();" required/>
+									
+								  </div>
+								  <div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Dodaj</button>
+								  </div>
+								</div>
+							  </div>
+							</div>
+
+							<div class="col-3 col-xl-3 mb-3 mr-4">
+							<label class="textright" for="date_start">od</label></div>		
+							<input class="form-control col-7 mb-3" name="date_start" id="date_start" type="date" required/>
+					
+							<div class="col-3 col-xl-3 mb-3 mr-4">
+							<label class="textright" for="date_end">do</label></div>	
+							<input class="form-control col-7 mb-3" name="date_end" id="date_end" type="date" required/>
+						</form>
 			
-			<div class="balance2">
-				<div class="balance2a">
-					<span class="fontello1"><i class="icon-chart-line"></i></span>
-					<h2>PRZYCHODY</h2>
-					<table id="incomeTable">
-						<tr>       
-							<th>   
-								Kategoria
-							</th>
-							<th>
-								Kwota
-							</th>
-						</tr>
-						<tr>
-							<td>   
-								xxx
-							</td>
-							<td>
-								xxx
-							</td>
-						</tr>
-						<tr>
-							<td>   
-								xxx
-							</td>
-							<td>
-								xxx
-							</td>
-						</tr>
-					</table>
+						<h2 class="head2 mx-auto mt-2 py-3">
+							<span class="mr-3"><i class="icon-chart-line"></i></span>Przychody
+						</h2>
+						
+
+						<div class="table-responsive col-lg-10 offset-lg-1">
+							<table class="table table-bordered table-hover" id="incomeTable">
+								<thead class="thead-light">
+									<tr>       
+										<th scope="col">   
+											Kategoria
+										</th>
+										<th scope="col">
+											Kwota
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>   
+											Wyngarodzenie
+										</td>
+										<td>
+											2000
+										</td>
+									</tr>
+									<tr>
+										<td>   
+											Odsetki bankowe
+										</td>
+										<td>
+											400 
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+				
+				
+						<h2 class="head2 mx-auto mt-2 py-3">
+							<span class="mr-3"><i class="icon-credit-card"></i></span>Wydatki
+						</h2>
+				
+						<div class="table-responsive col-lg-10 offset-lg-1">
+							<table class="table table-bordered table-hover" id="expenceTable">
+								<thead class="thead-light">
+									<tr>       
+										<th scope="col">   
+											Kategoria
+										</th>
+										<th scope="col">
+											Kwota
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>   
+											Jedzenie
+										</td>
+										<td>
+											1000
+										</td>
+									</tr>
+									<tr>
+										<td>   
+											Mieszkanie
+										</td>
+										<td>
+											800 
+										</td>
+									</tr>
+									<tr>
+										<td>   
+											Transport
+										</td>
+										<td>
+											800 
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="col-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2" id="piechart"></div>
+
+						<h2 class="head2 mx-auto mt-2 py-3">
+							<span class="mr-3"><i class="icon-balance-scale"></i></span>Bilans
+						</h2>
+
+						<div class="text4 mx-auto"> 39000 zł</div>
+						<div class="text5 mx-auto pt-1 mb-3">Gratulacje - świetnie zarządzasz finansami</div>
+						
+						<a href="menu.html" class="d-block button2 col-4 mx-auto my-4"><i class="icon-home"></i>Powrót</a>						
+						
+						</div>				
+					</div>
 				</div>
-				<div id="piechart1"></div>
-				
-				<div class="balance2b">
-					<span class="fontello1"><i class="icon-credit-card"></i></span> 
-					<h2>WYDATKI</h2>
-					<table id="expenceTable">
-						<tr>       
-							<th>   
-								Kategoria
-							</th>
-							<th>
-								Kwota
-							</th>
-						</tr>
-						<tr>
-							<td>   
-								xxx
-							</td>
-							<td>
-								xxx
-							</td>
-						</tr>
-						<tr>
-							<td>   
-								xxx
-							</td>
-							<td>
-								xxx
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div id="piechart2"></div>
-				
-				
-			</div>
-			
-			<div class="balance3">
-				<div><span class="fontello1"><i class="icon-balance-scale"></i></span>
-				<h2>BILANS</h2></div>		
-				<div class="balance3a">39000 zł</div>
-				<div class="balance3c">Gratulacje - świetnie zarządzasz finansami</div>	
-			</div>
-			
-			<a href="menu.html"><div class="button">
-				Powrót do menu
-			</div></a>
-			
-			
-		</div>
+			<div id="extra"></div>
+		</section>
 	</main>
 	
+	
 	<footer>
-		<div class="information">2020 &copy; Created by: Agnieszka Jankowska</div>
+		<div id="information">2020 &copy; Created by: Agnieszka Jankowska</div>
 	</footer>
 	
-	<script type="text/javascript" src="script2.js"></script>
+	<script src="https://www.gstatic.com/charts/loader.js"></script> 
+	<script src="script2.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
 
-</body>
-</html>
+	</body>
+</html>	
+
+
+
+		
+
+			
+
