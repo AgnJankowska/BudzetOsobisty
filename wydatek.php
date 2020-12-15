@@ -1,3 +1,25 @@
+<?php
+session_start();
+unset($_SESSION['showed']);
+if (!isset($_SESSION['logged'])) {
+	header('Location: index.php');
+	exit();}
+	
+require_once "database.php";
+
+$result_expense = $connection->prepare('SELECT * FROM expenses_category_assigned_to_users WHERE user_id = :prep_id');
+$result_expense->bindValue(':prep_id', $_SESSION['id'], PDO::PARAM_INT);
+$result_expense->execute();
+
+$_SESSION['records_expense'] = $result_expense->fetchAll();
+
+$result_method = $connection->prepare('SELECT * FROM payment_methods_assigned_to_users WHERE user_id = :prep_id');
+$result_method->bindValue(':prep_id', $_SESSION['id'], PDO::PARAM_INT);
+$result_method->execute();
+
+$_SESSION['records_method'] = $result_method->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="pl">
   
@@ -28,22 +50,22 @@
 				<div class="collapse navbar-collapse" id="mainmenu">
 					<ul class="navbar-nav mx-auto">
 						<li class="nav-item mx-lg-1">
-							<a href="menu.html" class="nav-link"><i class="icon-home"></i>Start</a>
+							<a href="menu.php" class="nav-link"><i class="icon-home"></i>Start</a>
 						</li>
 						<li class="nav-item active mx-lg-1">
-							<a href="wydatek.html" class="nav-link"><i class="icon-credit-card"></i>Dodaj wydatek</a>
+							<a href="wydatek.php" class="nav-link"><i class="icon-credit-card"></i>Dodaj wydatek</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="przychód.html" class="nav-link"><i class="icon-chart-line"></i>Dodaj przychód</a>
+							<a href="przychod.php" class="nav-link"><i class="icon-chart-line"></i>Dodaj przychód</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="bilans.html" class="nav-link"><i class="icon-chart-pie"></i>Bilans</a>
+							<a href="bilans.php" class="nav-link"><i class="icon-chart-pie"></i>Bilans</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="#.html" class="nav-link"><i class="icon-cogs"></i>Ustawienia</a>
+							<a href="#.php" class="nav-link"><i class="icon-cogs"></i>Ustawienia</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="index.html" class="nav-link"><i class="icon-logout"></i>Wyloguj</a>
+							<a href="wyloguj.php" class="nav-link"><i class="icon-logout"></i>Wyloguj</a>
 						</li>
 					</ul>    
 				</div>
@@ -61,7 +83,7 @@
 							<span class="fontello mr-3"><i class="icon-credit-card"></i></span>Dodaj wydatek
 						</h1>
 					
-						<form class="form form-inline mt-4">
+						<form class="form form-inline mt-4" action="wydatekPHP.php" method="post">
 							
 							<label class="textright col-3 col-xl-2 offset-xl-1 mb-3 mr-4" for="amountOfMoney">Kwota</label>
 							<input class="col-7 form-control mb-3" name="amount" id="amountOfMoney" type="number" step="0.01" required/>
@@ -72,46 +94,34 @@
 							<input class="col-7 form-control mb-3" name="date" id="currentDate" type="date" required/>
 							
 							<div class="w-100"></div>
+													
+							<div class="col-3 col-xl-2 offset-xl-1 mb-3 mr-4">
+							<label class="textright" >Sposób płatności</label></div>							
+							<select name="payMethod" class="form-control col-7 mb-3">
 							
-							<div class="col-3 col-xl-2 offset-xl-1 mb-3 mr-4 textright">Sposób płatności</div>
+							<?php 
 							
-							<div class="col-7 mb-3 p-0">
-								<div class="row m-0">
-									<div class="col-12 col-md p-1">
-										<label class="expence2a col-12 p-0" id="active1" onclick="active1()"><span class="fontello2 px-md-3"><i class="icon-money"></i></span><input type="radio" name="payMethod" value="2" required/>Gotówka</label>
-									</div>
-									<div class="col-12 col-md p-1">
-										<label class="expence2a col-12 p-0" id="active2" onclick="active2()"><span class="fontello2"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="2" required/>Karta kredytowa</label>
-									</div>
-									<div class="col-12 col-md p-1">
-										<label class="expence2a col-12 p-0" id="active3" onclick="active3()"><span class="fontello2"><i class="icon-credit-card"></i></span><input type="radio" name="payMethod" value="3" required/>Karta debetowa</label>
-									</div>
-								</div>
-							</div>
+							foreach ($_SESSION['records_method'] as $record) {
+								echo'<option value="'.$record['id'].'">'.$record['name'].'</option>';
+							}
+							
+							?>
+							</select>
 							
 							<div class="w-100"></div>
 							
 							<div class="col-3 col-xl-2 offset-xl-1 mb-3 mr-4">
-							<label class="textright" >Kategoria</label></div>
-							
+							<label class="textright" >Kategoria</label></div>							
 							<select name="category" class="form-control col-7 mb-3">
-									<option value="1">Jedzenie</option>
-									<option value="2">Mieszkanie</option>
-									<option value="3">Transport</option>
-									<option value="4">Telekomunikacja</option>
-									<option value="5">Opieka zdrowotna</option>
-									<option value="6">Ubranie</option>
-									<option value="7">Higiena</option>
-									<option value="8">Dzieci</option>
-									<option value="9">Rozrywka</option>
-									<option value="10">Wycieczka</option>
-									<option value="11">Szkolenia</option>
-									<option value="12">Książki</option>
-									<option value="13">Oszczędności</option>
-									<option value="14">Na emeryturę</option>
-									<option value="15">Spłata długów</option>
-									<option value="16">Darowizna</option>
-									<option value="17">Inne wydatki</option>
+							
+							<?php 
+							
+							foreach ($_SESSION['records_expense'] as $record) {
+								echo'<option value="'.$record['id'].'">'.$record['name'].'</option>';
+							}
+							
+							?>
+
 							</select>
 							
 							<div class="w-100"></div>
@@ -120,16 +130,47 @@
 							<textarea class="col-7 form-control" id="comment" name="comment" cols="39" rows="1"></textarea>
 				
 							<div class="w-100"></div>
-				
-							<div class="col-12 my-4 pt-4 buttons">
-											
-								<a href="menu.html">
-								<div class="d-inline button mx-2 px-5"><i class="icon-cancel"></i>Anuluj</div></a>
-								
+										
+							<div class="col-12 py-4 px-0 buttons">
+					
+								<a href="menu.php"><div class="d-inline button mx-2 px-5"><i class="icon-cancel"></i>Anuluj</div></a>
 								<button class="d-inline button2 mx-2 px-5"><i class="icon-ok"></i>Dodaj</button>
-								
+															
 							</div>
 						</form>
+						
+						<?php						
+							if(isset($_SESSION['added_expense'])){
+								echo '<script type="text/javascript"> 
+										window.onload = showModal;
+										function showModal(){
+										$("#Modal").modal();}
+									</script>';	
+								unset($_SESSION['added_expense']);
+							}
+						?>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Nowy wydatek</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Do bilansu został dodany nowy wydatek.<br> Tak trzymaj i dodawaj wszystkie wydatki!
+									</div>
+									<div class="modal-footer">
+										<a href="przychod.php"><button type="button" class="btn btn-primary" data-dismiss="modal">Dodaj nowy wydatek</button></a>
+										<a href="menu.php"><button type="button" class="btn btn-secondary">Powrót do menu</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 			</div>
