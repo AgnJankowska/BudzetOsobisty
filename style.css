@@ -59,8 +59,7 @@ body{
 	color: #0066cc;	
 	font-weight: bolder;
 	margin: 0;
-	padding: 0;}
-	
+	padding: 0;}	
 .text4{
 	font-size: 30px;
 	color: #009900;	
@@ -69,8 +68,8 @@ body{
 .text5{
 	font-size: 18px;
 	color: #009900;
-	font-weight: bolder;}
-
+	font-weight: bolder;}	
+	
 .tile1a{
 	color: #f9f9f9;
 	background-color: #0066cc;
@@ -230,3 +229,8 @@ a:hover .button2{
 	text-align:right !important;
 	font-size:20px;}
 
+.table_sum{
+	background-color: #f1f1f1;
+	color: #0066cc;
+	font-weight: bold;
+}

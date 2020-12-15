@@ -1,3 +1,19 @@
+<?php
+    session_start(); 
+	if (isset($_SESSION['registration_complete'])) unset($_SESSION['registration_complete']);
+	if (isset($_SESSION['fr_name'])) unset($_SESSION['fr_name']);
+	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+	if (isset($_SESSION['fr_password'])) unset($_SESSION['fr_password']);
+	if (isset($_SESSION['e_name'])) unset($_SESSION['e_name']);
+	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+	if (isset($_SESSION['e_password'])) unset($_SESSION['e_password']);	
+	
+	//strona jest niedostępna dla zalogowanych użytkowników 
+	if (isset($_SESSION['logged'])) {
+		header('Location: menu.php');
+		exit();}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
   
@@ -48,7 +64,7 @@
 					</div>
 				
 					<div class ="col-sm-12 col-md-6 mt-1 mb-4">
-						<a href="rejestracja.html">
+						<a href="rejestracja.php">
 							<div class="col-md-12 tile1a py-2">
 								<span class="fontello mr-3"><i class="icon-user-add"></i></span>
 								<p>Rejestracja</p>
@@ -57,7 +73,7 @@
 					</div>
 					
 					<div class ="col-sm-12 col-md-6 ml-auto mt-1 mb-5">
-						<a href="logowanie.html">
+						<a href="logowanie.php">
 							<div class="col-md-12 tile1a py-2">
 								<span class="fontello mr-3"><i class="icon-key"></i></span>
 								<p>Logowanie</p>

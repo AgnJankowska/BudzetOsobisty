@@ -1,3 +1,20 @@
+<?php
+session_start();
+unset($_SESSION['showed']);
+if (!isset($_SESSION['logged'])) {
+	header('Location: index.php');
+	exit();}
+	
+require_once "database.php";
+
+$result = $connection->prepare('SELECT * FROM incomes_category_assigned_to_users WHERE user_id = :prep_id');
+$result->bindValue(':prep_id', $_SESSION['id'], PDO::PARAM_INT);
+$result->execute();
+
+$_SESSION['records'] = $result->fetchAll();
+
+?>
+								
 <!DOCTYPE html>
 <html lang="pl">
   
@@ -11,7 +28,6 @@
 	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/fontello.css" type="text/css"/>
-	
 </head>
 
 <body>
@@ -28,22 +44,22 @@
 				<div class="collapse navbar-collapse" id="mainmenu">
 					<ul class="navbar-nav mx-auto">
 						<li class="nav-item mx-lg-1">
-							<a href="menu.html" class="nav-link"><i class="icon-home"></i>Start</a>
+							<a href="menu.php" class="nav-link"><i class="icon-home"></i>Start</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="wydatek.html" class="nav-link"><i class="icon-credit-card"></i>Dodaj wydatek</a>
+							<a href="wydatek.php" class="nav-link"><i class="icon-credit-card"></i>Dodaj wydatek</a>
 						</li>
 						<li class="nav-item active mx-lg-1">
-							<a href="przychód.html" class="nav-link"><i class="icon-chart-line"></i>Dodaj przychód</a>
+							<a href="przychod.php" class="nav-link"><i class="icon-chart-line"></i>Dodaj przychód</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="bilans.html" class="nav-link"><i class="icon-chart-pie"></i>Bilans</a>
+							<a href="bilans.php" class="nav-link"><i class="icon-chart-pie"></i>Bilans</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="#.html" class="nav-link"><i class="icon-cogs"></i>Ustawienia</a>
+							<a href="#.php" class="nav-link"><i class="icon-cogs"></i>Ustawienia</a>
 						</li>
 						<li class="nav-item mx-lg-1">
-							<a href="index.html" class="nav-link"><i class="icon-logout"></i>Wyloguj</a>
+							<a href="wyloguj.php" class="nav-link"><i class="icon-logout"></i>Wyloguj</a>
 						</li>
 					</ul>    
 				</div>
@@ -61,7 +77,7 @@
 							<span class="fontello mr-3"><i class="icon-chart-line"></i></span>Dodaj przychód
 						</h1>
 					
-						<form class="form form-inline mt-4">
+						<form class="form form-inline mt-4" action="przychodPHP.php" method="post">
 							
 							<label class="textright col-3 col-xl-2 offset-xl-1 mb-3 mr-4" for="amountOfMoney">Kwota</label>
 							<input class="col-7 form-control mb-3" name="amount" id="amountOfMoney" type="number" step="0.01" required/>
@@ -77,10 +93,14 @@
 							<label class="textright" >Kategoria</label></div>
 							
 							<select name="category" class="form-control col-7 mb-3">
-									<option value="1">Wynagrodzenie</option>
-									<option value="2">Odestki bankowe</option>
-									<option value="3">Sprzedaż na allegro</option>
-									<option value="4">Inne</option>
+							
+							<?php 
+							
+							foreach ($_SESSION['records'] as $record) {
+								echo'<option value="'.$record['id'].'">'.$record['name'].'</option>';
+							}	
+							?>
+							
 							</select>
 							
 							<div class="w-100"></div>
@@ -90,21 +110,51 @@
 				
 							<div class="w-100"></div>
 				
-							<div class="col-12 my-4 pt-4 buttons">
+							<div class="col-12 py-4 px-0 buttons">
 					
-								<a href="menu.html">
-								<div class="d-inline button mx-2 px-5"><i class="icon-cancel"></i>Anuluj</div></a>
-								
-								<button class="d-inline button2 mx-2 px-5"><i class="icon-ok"></i>Dodaj</button>
-															
-							</div>
+								<a href="menu.php"><div class="d-inline button mx-2 px-5"><i class="icon-cancel"></i>Anuluj</div></a>							
+								<button  class="d-inline button2 mx-2 px-5"><i class="icon-ok"></i>Dodaj</button>					
+			
+							</div>	
 						</form>
+
+						<?php						
+							if(isset($_SESSION['added_income'])){
+								echo '<script type="text/javascript"> 
+										window.onload = showModal;
+										function showModal(){
+										$("#Modal").modal();}
+									</script>';	
+								unset($_SESSION['added_income']);
+							}
+						?>
+
+						<!-- Modal -->
+						<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Nowy przychód</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Do bilansu został dodany nowy przychód.<br> Tak trzymaj i dodawaj wszystkie przychody!
+									</div>
+									<div class="modal-footer">
+										<a href="przychod.php"><button type="button" class="btn btn-primary" data-dismiss="modal">Dodaj nowy przychód</button></a>
+										<a href="menu.php"><button type="button" class="btn btn-secondary">Powrót do menu</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 			</div>
-			
 			<div id="extra"></div>	
-		</section>
+		</section>		
 	</main>
 	
 	
