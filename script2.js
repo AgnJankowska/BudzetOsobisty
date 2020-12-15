@@ -1,4 +1,4 @@
-window.onload = setDates();
+window.onload = setDatesStart();
 
 //Start and end of balance
 function currentDay() {
@@ -24,22 +24,22 @@ function isThisYearLeap(year) {
 
 function checkNumberOfDays (year, month) {
  switch (month) {
-   case '01':
-   case '03':
-   case '05':
-   case '07':
-   case '08':
-   case '10':
-   case '12': 
+   case 1:
+   case 3:
+   case 5:
+   case 7:
+   case 8:
+   case 10:
+   case 12: 
        return '31';
    
-   case '04':
-   case '06':
-   case '09':
-   case '11': 
+   case 4:
+   case 6:
+   case 9:
+   case 11: 
        return '30';
 
-   case '02': 
+   case 2: 
        if (isThisYearLeap(year)) return '29';
        else                      return '28';
    }
@@ -86,16 +86,21 @@ function setEndDate(end) {
 		return y + "-" + m + "-" + d}
 	
 	else if (end==2){
+			
 		if( currentMonth()==1){
 			m = 12
 			y = currentYear()-1;
+			d = checkNumberOfDays(y, m);
 		}
+		
 		else{
 			m = currentMonth()-1;
-			if(m<10) m = '0'+m;
+			y = currentYear();
+			d = checkNumberOfDays(y, m);
+			
 		}
-		d = checkNumberOfDays(y, m);
-
+		
+		if(m<10) m = '0'+m;
 		return y + "-" + m + "-" + d}
 		
 	else if (end==3){
@@ -110,7 +115,7 @@ function setEndDate(end) {
 		return ''
 }
 
-function setDates() {
+function setDatesStart() {
 	let number = document.getElementById("range").value;
 		
 	if (number==4){
@@ -124,12 +129,25 @@ function setDates() {
 		document.getElementById("date_end").value = setEndDate(number);}
 }
 
+function setDates() {
+	let number = document.getElementById("range").value;
+		
+	if (number==4){
+		$("#exampleModal").modal();
+		document.getElementById("date_start").value = document.getElementById("date1").value;
+		document.getElementById("date_end").value = document.getElementById("date2").value;
+		}
+	
+	else {
+		document.getElementById("date_start").value = setStartDate(number);
+		document.getElementById("date_end").value = setEndDate(number);
+		document.form.submit();}
+}
 
-
-
-
-
-
+function sendForm(){
+		document.getElementById("range").value = "4";
+		document.form.submit();	
+}
 
 
 
