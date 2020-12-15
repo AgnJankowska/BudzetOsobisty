@@ -170,10 +170,10 @@ if (!isset($_SESSION['logged'])) {
 								<tbody>						
 								 <?php
 									foreach ($_SESSION['incomes'] as $income) {
-									echo '<tr><td>'.$income["name"].'</td><td>'.$income["amountSum"].'</td></tr>';
+									echo '<tr><td>'.$income["name"].'</td><td>'.number_format($income["amountSum"],2, '.', ' ').'</td></tr>';
 									}
 								?>
-								<tr><td>SUMA PRZYCHODÓW</td><td><?php echo $_SESSION['sum_incomes'] ?></td></tr>
+								<tr class="table_sum"><td>Suma przychodów</td><td><?php echo number_format($_SESSION['sum_incomes'] ,2, '.', ' ')?></td></tr>
 								</tbody>
 							</table>
 						</div>				
@@ -197,22 +197,22 @@ if (!isset($_SESSION['logged'])) {
 								<tbody>
 								 <?php
 									foreach ($_SESSION['expenses'] as $expense) {
-									echo '<tr><td>'.$expense["name"].'</td><td>'.$expense["amountSum"].'</td></tr>';
+									echo '<tr><td id="expense_name">'.$expense["name"].'</td><td id="expense_amount">'.number_format($expense["amountSum"],2, '.', ' ').'</td></tr>';
 									}
 								?>
-								<tr class="table_sum"><td>SUMA WYDATKÓW</td><td><?php echo $_SESSION['sum_expense'] ?></td></tr>
+								<tr class="table_sum"><td>Suma wydatków</td><td><?php echo number_format($_SESSION['sum_expenses'] ,2, '.', ' '); ?></td></tr>
 								</tbody>
 							</table>
 						</div>
-
 						<div class="col-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2" id="piechart"></div>
 
 						<h2 class="head2 mx-auto mt-2 py-3">
 							<span class="mr-3"><i class="icon-balance-scale"></i></span>Bilans
 						</h2>
 
-						<div class="text4 mx-auto"> 39000 zł</div>
-						<div class="text5 mx-auto pt-1 mb-3">Gratulacje - świetnie zarządzasz finansami</div>
+						<div class=" <?=(($_SESSION['savings']<0)?'text4debet ':'text4 '); ?> mx-auto"> 
+						<?php echo number_format($_SESSION['savings'] ,2, '.', ' '); ?></div>
+						<div class="<?= (($_SESSION['savings']<0)?'text5debet ':'text5 '); ?> mx-auto pt-1 mb-3"><?= (($_SESSION['savings']<0)?'Uważaj, wpadasz w długi':'Gratulacje - świetnie zarządzasz finansami'); ?></div>
 						
 						<a href="menu.php" class="d-block button2 col-4 mx-auto my-4"><i class="icon-home"></i>Powrót</a>						
 						

@@ -34,7 +34,6 @@ $result_income->bindValue(':prep_startDate', $date_start, PDO::PARAM_STR);
 $result_income->bindValue(':prep_endDate', $date_end, PDO::PARAM_STR);
 $result_income->execute();
 $_SESSION['incomes'] = $result_income->fetchAll();
-
 $_SESSION['sum_incomes']=array_sum(array_column($_SESSION['incomes'], 'amountSum'));
 
 if (!$result_income) throw new PDOException;
@@ -46,12 +45,12 @@ $result_expense->bindValue(':prep_startDate', $date_start, PDO::PARAM_STR);
 $result_expense->bindValue(':prep_endDate', $date_end, PDO::PARAM_STR);
 $result_expense->execute();
 $_SESSION['expenses'] = $result_expense->fetchAll();
+$_SESSION['sum_expenses']=array_sum(array_column($_SESSION['expenses'], 'amountSum'));
 
-$_SESSION['sum_expense']=array_sum(array_column($_SESSION['expenses'], 'amountSum'));
+$_SESSION['savings'] = ($_SESSION['sum_incomes'] - $_SESSION['sum_expenses']);
 
 if (!$result_expense) throw new PDOException;
 
 header('Location: bilans.php');
 
 ?>  
-
