@@ -63,12 +63,20 @@ body{
 .text4{
 	font-size: 30px;
 	color: #009900;	
-	text-shadow:1px 1px 1px #32CD32;
 	font-weight: bolder;}	
 .text5{
 	font-size: 18px;
 	color: #009900;
+	font-weight: bolder;}
+
+.text4debet{
+	font-size: 30px;
+	color: #b71c1c;	
 	font-weight: bolder;}	
+.text5debet{
+	font-size: 18px;
+	color: #b71c1c;
+	font-weight: bolder;}
 	
 .tile1a{
 	color: #f9f9f9;
@@ -230,7 +238,6 @@ a:hover .button2{
 	font-size:20px;}
 
 .table_sum{
-	background-color: #f1f1f1;
-	color: #0066cc;
+	background-color: #ececec;
 	font-weight: bold;
 }
