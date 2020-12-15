@@ -1,3 +1,18 @@
+<?php
+    session_start(); 
+	if (isset($_SESSION['fr_name'])) unset($_SESSION['fr_name']);
+	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+	if (isset($_SESSION['fr_password'])) unset($_SESSION['fr_password']);
+	if (isset($_SESSION['e_name'])) unset($_SESSION['e_name']);
+	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+	if (isset($_SESSION['e_password'])) unset($_SESSION['e_password']);	
+	
+	//strona jest niedostępna dla zalogowanych użytkowników 
+	if (isset($_SESSION['logged'])) {
+		header('Location: menu.php');
+		exit();}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
   
@@ -47,7 +62,7 @@
 						
 					</div>
 					<div class ="col-sm-12 col-md-10 offset-md-1 offset-lg-0 col-lg-6 mt-1 mb-4">
-						<a href="rejestracja.html">
+						<a href="rejestracja.php">
 							<div class="col-md-12 tile1a py-2">
 								<span class="fontello mr-3"><i class="icon-user-add"></i></span>
 								<p>Rejestracja</p>
@@ -57,20 +72,37 @@
 					
 					<div class ="col-sm-12 col-md-10 offset-md-1 offset-lg-0 col-lg-6 ml-lg-auto mt-1 mb-5">
 						<div class="col-md-12 tile1a py-2">
-							<a href="index.html" class="back"><i class="icon-left-big"></i></a>
+							<a href="index.php" class="back"><i class="icon-left-big"></i></a>
 							<span class="fontello mr-3"><i class="icon-key"></i></span>
-							<p>Logowanie</p>
-								
-							<form class="form-inline main0">
+							
+							<?php
+								if(isset($_SESSION['registration_complete'])) {
+									echo '<p style="font-size:20px;">'.'Rejestracja udana! Zaloguj się na konto'.'</p>';
+									unset($_SESSION['registration_complete']);
+								}
+								else echo '<p>'.'Logowanie'.'</p>';
+							?>
+							
+							<form class="form-inline main0" action="logowaniePHP.php" method="post">
 
-								<label class="col-4 mb-3 textright" for="email">E-mail</label>
-								<input class="col-6 form-control mb-3 input" id="email" name="email" type="email" required/>
+								<label class="col-4 mt-3 textright" for="email">E-mail</label>
+								<input class="col-6 form-control mt-3 input" id="email" name="email" type="email" required/>
+								
 								<div class="w-100"></div>
-								<label class="col-4 mb-3 textright" for="password">Hasło</label>
-								<input class="col-6 form-control mb-3 input" id="password" name="password" type="password" required/>
+								
+								<label class="col-4 mt-3 textright" for="password">Hasło</label>
+								<input class="col-6 form-control mt-3 input" id="password" name="password" type="password" required/>
+								
 								<div class="w-100"></div>
-								<div class="col-12 my-2"><input class=" button" name="login" type="submit" value="Zaloguj się"/></div>
-									
+								
+								<?php
+									if (isset($_SESSION['error'])){
+									echo '<div class="offset-sm-4 offset-2" style="font-size:16px; color:#ececec;">'.$_SESSION['error'].'</div>';
+									unset($_SESSION['error']);}
+								?>
+								
+								<div class="col-12 my-2 mt-3"><input class=" button" name="login" type="submit" value="Zaloguj się"/></div>
+								
 							</form>
 						</div>
 					</div>
