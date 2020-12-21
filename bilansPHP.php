@@ -50,7 +50,6 @@ $_SESSION['sum_expenses']=array_sum(array_column($_SESSION['expenses'], 'amountS
 $_SESSION['savings'] = ($_SESSION['sum_incomes'] - $_SESSION['sum_expenses']);
 
 if (!$result_expense) throw new PDOException;
-
 header('Location: bilans.php');
 
 ?>  
