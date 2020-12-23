@@ -110,10 +110,10 @@ $_SESSION['records'] = $result->fetchAll();
 				
 							<div class="w-100"></div>
 				
-							<div class="col-12 py-4 px-0 buttons">
+							<div class="col-12 py-4 mx-auto buttons">
 					
-								<a href="menu.php"><div class="d-inline button mx-2 px-5"><i class="icon-cancel"></i>Anuluj</div></a>							
-								<button  class="d-inline button2 mx-2 px-5"><i class="icon-ok"></i>Dodaj</button>					
+								<button  class="d-inline button2 mx-2"><i class="icon-ok"></i>Dodaj</button>
+								<a href="menu.php"><div class="d-inline button mx-2"><i class="icon-cancel"></i>Anuluj</div></a>										
 			
 							</div>	
 						</form>

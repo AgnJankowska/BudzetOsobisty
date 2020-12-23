@@ -1,6 +1,6 @@
 <?php
   $host = "localhost";
-  $user = "root";
-  $password = "";
-  $database = "homebudget"; 
+  $user = "agnies18_HomeBudgetAdmin";
+  $password = "Dziki-4ever";
+  $database = "agnies18_homebudget"; 
 ?>

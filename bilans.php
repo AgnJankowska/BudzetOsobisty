@@ -70,29 +70,29 @@ if (!isset($_SESSION['logged'])) {
 					
 						<form class="form form-inline mt-4" action="bilansPHP.php" method="post" name="form" id="form">
 							<div class="col-3 col-xl-3 mb-3 mr-4">
-							<label class="textright" >Bilans z okresu</label></div>
+							<label class="textright" >Okres bilansu</label></div>
 							
 							<select class="form-control col-7 mb-3" name="range" id="range" onChange="setDates();">  
 									
 									<option value="1" <?php 
 									if (isset($_SESSION['fr_range'])&& ($_SESSION['fr_range']==1)){
 										echo "selected";}
-										?>>bieżącego miesiąca</option>
+										?>>bieżący miesiąc</option>
 									
 									<option value="2" <?php 
 									if (isset($_SESSION['fr_range'])&& ($_SESSION['fr_range']==2)){
 										echo "selected";}
-										?>>poprzedniego miesiąca</option>
+										?>>poprzedni miesiąc</option>
 										
 									<option value="3" <?php 
 									if (isset($_SESSION['fr_range'])&& ($_SESSION['fr_range']==3)){
 										echo "selected";}
-										?>>bieżącego roku</option>
+										?>>bieżący rok</option>
 										
 									<option value="4" <?php 
 									if (isset($_SESSION['fr_range'])&& ($_SESSION['fr_range']==4)){
 										echo "selected";} 
-										?>>niestandardowego czasu</option>
+										?>>niestandardowy czas</option>
 							</select>
 
 							<div class="col-3 col-xl-3 mb-3 mr-4">
@@ -204,7 +204,11 @@ if (!isset($_SESSION['logged'])) {
 								</tbody>
 							</table>
 						</div>
-						<div class="col-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2" id="piechart"></div>
+						
+						<?php
+						if (isset($_SESSION['expenses']) && count ($_SESSION['expenses']) > 0)
+						echo '<div class="col-12 col-md-10 offset-md-1 col-xl-8 offset-xl-2" id="piechart"></div>';
+						?>
 
 						<h2 class="head2 mx-auto mt-2 py-3">
 							<span class="mr-3"><i class="icon-balance-scale"></i></span>Bilans
